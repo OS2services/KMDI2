@@ -1,3 +1,2 @@
-This repository contains a single Java 11, Spring Boot, application, that can connect to a OS2rollekatalog instance, and query for role-assignments.
-It exposes this information as a REST service that can be called by other applications
-
+This repository contains an integration to the KMD I2 REST endpoints, that makes it easy/easier to access the specific operations
+used for maintaining organisation-data within KMD I2, and makes it exchangable with other integrations in the future.
