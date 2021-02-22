@@ -6,9 +6,11 @@ import dk.digitalidentity.service.dto.Employment;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 public class EmploymentDTO {
 	private String ssn;

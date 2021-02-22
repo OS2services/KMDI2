@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class KMDI2Configuration {
 	private boolean enabled = false;
+	private boolean dryRun = false;
 	private String url = "";
 	private String apiKey = "";
 	

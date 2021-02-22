@@ -63,6 +63,11 @@ public class KMDI2Service {
 	}
 
 	public boolean createEmployment(EmploymentDTO employment) {
+		if (configuration.getKmdi2().isDryRun()) {
+			log.info("DRYRUN: Did NOT call KMD I2 API with the following CREATE payload: " + employment.toString());
+			return true;
+		}
+
 		String url = configuration.getKmdi2().getUrl() + "employment/dtrId/" + employment.getInstitutionDtrId();
 
 		HttpHeaders headers = new HttpHeaders();
@@ -89,6 +94,11 @@ public class KMDI2Service {
 	}
 
 	public boolean updateEmployment(String id, EmploymentDTO employment) {
+		if (configuration.getKmdi2().isDryRun()) {
+			log.info("DRYRUN: Did NOT call KMD I2 API with the following UPDATE payload: " + employment.toString());
+			return true;
+		}
+
 		String url = configuration.getKmdi2().getUrl() + "employment/" + id;
 
 		HttpHeaders headers = new HttpHeaders();
@@ -103,9 +113,6 @@ public class KMDI2Service {
 		
 		HttpEntity<Employment> request = new HttpEntity<>(e, headers);
 		try {
-			// TODO: remove
-			log.info("calling endpoint: " + url);
-
 			ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.PUT, request, String.class);
 			if (response.getStatusCodeValue() >= 200 && response.getStatusCodeValue() <= 299) {
 				return true;
@@ -122,6 +129,11 @@ public class KMDI2Service {
 	}
 
 	public boolean deleteEmployment(String id) {
+		if (configuration.getKmdi2().isDryRun()) {
+			log.info("DRYRUN: Did NOT call KMD I2 API with the following DELETE payload: [employmentId=" + id + "]");
+			return true;
+		}
+
 		String url = configuration.getKmdi2().getUrl() + "employment/" + id;
 
 		HttpHeaders headers = new HttpHeaders();
