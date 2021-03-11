@@ -23,4 +23,4 @@ COPY --from=build ${TARGET}/kmd-i2-integration.jar .
 
 EXPOSE 8997
 
-ENTRYPOINT ["java", "-Xmx128m", "-jar", "kmd-i2-integration.jar"]
+ENTRYPOINT ["java", "-Dloader.path=config/*", "-Xmx256m", "-jar", "kmd-i2-integration.jar"]
