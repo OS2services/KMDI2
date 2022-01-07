@@ -20,6 +20,10 @@ public class EmploymentDTO {
 	private String mobilePhone;
 	private List<String> roles;
 	
+	// only set if not already set on the other end
+	private String startDate;
+	private boolean transferToUserAdministration;
+	
 	public EmploymentDTO(Employment employment) {
 		this.ssn = employment.getSsn();
 		this.employmentId = employment.getEmploymentId();

@@ -1,5 +1,6 @@
 package dk.digitalidentity.service.dto;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -26,14 +27,14 @@ public class Employment {
 	private long employmentId;
 	private String institutionProductionNumber;
 	private long institutionId;
-	private boolean transferToUserAdministration;
 	private boolean manuallyAdded;
 	private String aliasName;
 	private String workPhone;
 	
 	// default values for create, will be overwritten on updates by whatever is in KMD I2
 	private String endDate = "9999-12-31T00:00:00";
-	private String startDate = "0001-01-01T00:00:00";
+	private String startDate =  LocalDate.now().toString() + "T00:00:00";
+	private boolean transferToUserAdministration = true;
 
 	public void copyFromEmployment(EmploymentDTO e) {
 		this.ssn = e.getSsn();
